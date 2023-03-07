@@ -1,0 +1,28 @@
+{
+  "name": "tristate-analyzer",
+  "version": "1.0.0",
+  "description": "Configure OpenAI APIs to return one of three deterministic answers to a data analysis prompt",
+  "main": "lib/index.cjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ananopoulos/tristate-analyzer"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andy Nanopoulos",
+  "license": "MIT",
+  "keywords": [
+    "openai",
+    "tristate-analyzer",
+    "large language model"
+  ],
+  "dependencies": {
+    "openai": "^3.2.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "yargs": "^17.7.1"
+  }
+}
