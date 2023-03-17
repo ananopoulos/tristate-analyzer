@@ -20,11 +20,38 @@ Large Language Models (LLM) can be used to analyze many types of inputs and retu
 
 You can clone this repo [**tristate-analyzer**](https://github.com/ananopoulos/tristate-analyzer) and modify it as needed or you can:
 ```
-mpm install tristate-analyzer
+npm install tristate-analyzer
 ```
 
 ## Usage
-First, get an [**OpenAI**](https://platform.openai.com) key. Next, create a Node JS module to consume the analyzer. Here is a CLI you can use for testing:
+First, get an [**OpenAI**](https://platform.openai.com) key. Next, create a Node JS module to consume the analyzer. 
+
+Require the module:
+
+```
+const { analyze } = require("../lib/index.cjs");
+```
+
+Setup the arguments to the analyzer:
+
+```
+ * @param {string} openApiKey API key from OpenAI subscription
+ * @param {number} maxTokens The maximum number of OpenAI tokens to be used in the API call
+ * @param {{yesCriteria: string, noCriteria: string, unknownCriteria: string}} tristateAnalyzerConfig 
+ * @param {string} data The string to be analyzed
+ * @param {string} [model='gpt-3.5-turbo'] An optional OpenAI model
+ * @returns {{analysis: string, prompt: string, message: string}} A Promise once the analysis is complete
+ ```
+
+Call the analyzer and base your workflow on the results:
+
+```
+analyze(openApiKey, maxTokens, tristateAnalyzerConfig, argv.data).then((res) => {
+  console.log(res);
+});
+```
+
+Here is a CLI you can use for testing:
 
 ```
 const { analyze } = require("../lib/index.cjs");
@@ -73,7 +100,7 @@ Your **yesCriteria**, **noCriteria**, and **unknownCriteria** will be used to cr
 ```
 `Return \"yes\" if ${tristateAnalyzerConfig.yesCriteria}, \"no\" if ${tristateAnalyzerConfig.noCriteria}, or \"unknown\" if ${tristateAnalyzerConfig.unknownCriteria} and give the reason for your response: ${data}`
 ```
-The package will send the prompt to the **gpt-3.5-turbo** model and return a response similar to this:
+The package will send the prompt to the **gpt-3.5-turbo** model by default and return a response similar to this:
 
 ```
 {

@@ -1,6 +1,6 @@
 {
   "name": "tristate-analyzer",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Configure OpenAI APIs to return one of three deterministic answers to a data analysis prompt",
   "main": "lib/index.cjs",
   "repository": {
@@ -16,7 +16,11 @@
   "keywords": [
     "openai",
     "tristate-analyzer",
-    "large language model"
+    "large language model",
+    "llm",
+    "gpt",
+    "gpt-4",
+    "chatbot"
   ],
   "dependencies": {
     "openai": "^3.2.1"
